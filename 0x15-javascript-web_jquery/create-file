@@ -1,0 +1,8 @@
+l#!/bin/bash
+
+for i in {100..103}
+do
+	filename="${i}-script.js"
+	touch "$filename"
+	echo -e "\e[1;34mCreated file: \e[1;32m$filename\e[0m"
+done
