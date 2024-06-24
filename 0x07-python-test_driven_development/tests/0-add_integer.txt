@@ -1,29 +1,60 @@
-"Test cases for add_integer function"
+Using ``add_integer``
+-----------------------
 
-# Test Case 1: Basic addition
->>> add_integer(1, 2)
-3
+Parameter "b" is defaulted to int "98"
+Makes sure the parameters are type int
+Returns the sum of the parameters
 
-# Test Case 2: Negative numbers
->>> add_integer(100, -2)
-98
+First import ``add_integer``
 
-# Test Case 3: Missing second parameter (uses default value)
->>> add_integer(2)
-100
+    >>> add_integer = __import__('0-add_integer').add_integer
 
-# Test Case 4: Floats are casted to integers
->>> add_integer(100.3, -2)
-98
+Now use it:
 
-# Test Case 5: Invalid type for second parameter
->>> add_integer(4, "School")
-Traceback (most recent call last):
+Basic usage:
+    >>> add_integer(1, 2)
+    3
+
+Negative input:
+    >>> add_integer(100, -2)
+    98
+
+One input:
+    >>> add_integer(2)
+    100
+
+Float and negative input:
+    >>> add_integer(100.3, -2)
+    98
+
+Float overflow:
+    >>> add_integer(1500.5)
+    1598
+
+Float NaN:
+    >>> add_integer(float('NaN'))
+    Traceback (most recent call last):
     ...
-TypeError: b must be an integer
+    ValueError: cannot convert float NaN to integer
 
-# Test Case 6: Invalid type for first parameter
->>> add_integer(None)
-Traceback (most recent call last):
+String input:
+    >>> add_integer(4, "School")
+    Traceback (most recent call last):
     ...
-TypeError: a must be an integer
+    TypeError: b must be an integer
+
+None input:
+    >>> add_integer(None)
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
+
+Double negative float input:
+    >>> add_integer(-100.5, -10.8)
+    -110
+
+Double string input:
+    >>> add_integer("holberton", "school")
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
